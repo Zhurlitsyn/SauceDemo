@@ -1,0 +1,14 @@
+# Compiled class file
+*.class
+
+# iml file
+*.iml
+
+# out folder
+/.out
+
+# idea folder
+/.idea
+
+#target folder
+/.target
