@@ -26,14 +26,6 @@ public class LoginTest extends BaseTest {
                 .getText();
         assertEquals(checkStr, "Epic sadface: Username is required", "Wrong error message");
 
-        driver.findElement(By.xpath("//id='login_button'"));
-        driver.findElement(By.xpath("//input[text()='Login']"));
-        driver.findElement(By.xpath("//*[contains(@class,'btn')]"));
-        driver.findElement(By.xpath("//class[contains(text(),'submit')]"));
-        driver.findElement(By.xpath("//*[text()='password']//ancestor::div[@class='login_box']//input"));
-        driver.findElement(By.xpath("//div[@class='login-box']//descendant::input[@id='login-button']"));
-        driver.findElement(By.xpath("//div[@class='login-box']//following::input"));
-
     }
     @Test
     public void passwordIsRequired() {
