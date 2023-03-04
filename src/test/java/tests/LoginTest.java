@@ -1,5 +1,6 @@
+package tests;
+
 import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
@@ -8,25 +9,24 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void successfulLogin() {
-        driver.get("https://www.saucedemo.com/");
-        driver.findElement(By.id("user-name")).sendKeys("standard_user");
-        driver.findElement(By.id("password")).sendKeys("secret_sauce");
-        driver.findElement(By.id("login-button")).click();
-        String checkStr = driver
-                .findElement(By.xpath("//span[@class='title']")).getText();
-        assertEquals(checkStr, "PRODUCTS", "Login is unsuccessful");
+        loginPage.open();
+        loginPage.login(USERNAME, PASSWORD);
+
+
+        String checkStr = productsPage.getTitle();
+        assertEquals(checkStr, "Products", "Login is unsuccessful");
 
     }
+
     @Test
     public void userNameIsRequired() {
-        driver.get("https://www.saucedemo.com/");
-        driver.findElement(By.id("login-button")).click();
-        String checkStr = driver
-                .findElement(By.cssSelector("[data-test=error]"))
-                .getText();
+        loginPage.open();
+        loginPage.login("", "");
+        String checkStr = loginPage.getErrorMessage();
         assertEquals(checkStr, "Epic sadface: Username is required", "Wrong error message");
 
     }
+
     @Test
     public void passwordIsRequired() {
         driver.get("https://www.saucedemo.com/");
