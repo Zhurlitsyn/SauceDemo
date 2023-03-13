@@ -14,7 +14,7 @@ import static pages.ProductsPage.productsPriceList;
 
 public class CartPageTest extends BaseTest {
 
-    String checkTitle;
+    String checkTitle; //
 
     public void roadToCartPage() {
         loginPage.open();

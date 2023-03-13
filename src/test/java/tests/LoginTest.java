@@ -10,7 +10,7 @@ public class LoginTest extends BaseTest {
     @Test
     public void successfulLogin() {
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
+        loginPage.login(USERNAME, PASSWORD); //
 
         String checkStr = productsPage.getTitle();
         assertEquals(checkStr, "Products", "Login is unsuccessful");
