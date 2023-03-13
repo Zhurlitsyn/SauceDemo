@@ -12,6 +12,7 @@ public class BuyAnyProduct extends BaseTest {
     public void buyAnyProduct() {
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
+        productsPage.isPageOpened();
         productsPage.addToCart("Sauce Labs Fleece Jacket");
         productsPage.openCart();
         cartPage.checkout();

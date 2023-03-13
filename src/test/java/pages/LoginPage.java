@@ -24,10 +24,10 @@ public class LoginPage extends BasePage {
 
 
     public void login(String username, String password) {
-        driver.findElement(USERNAME_INPUT).sendKeys("standard_user");
-        driver.findElement(PASSWORD_INPUT).sendKeys("secret_sauce");
+        driver.findElement(USERNAME_INPUT).sendKeys(username);
+        driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
-
+        waitForPageLoaded();
     }
 }
 

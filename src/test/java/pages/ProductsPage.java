@@ -2,10 +2,12 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
 
-public class ProductsPage extends BasePage{
+public class ProductsPage extends BasePage {
     String addToCartXpath = "//*[text()='%s']/ancestor::*[contains(@class, 'inventory_item')]//button";
     public static final List<String> productsList = List.of("Sauce Labs Backpack", "Sauce Labs Bike Light", "Sauce Labs Fleece Jacket");
     public static final List<String> productsPriceList = List.of("$29.99", "$9.99", "$49.99");
@@ -16,10 +18,13 @@ public class ProductsPage extends BasePage{
         super(driver);
     }
 
-
     public void addToCart(String product) {
         By addToCartLocator = By.xpath(String.format(addToCartXpath, product));
         driver.findElement(addToCartLocator).click();
+    }
+
+    public void isPageOpened() {
+        wait.until(ExpectedConditions.textToBe(TITLE, "Products"));
     }
 
     public void addToCartList() {
@@ -27,7 +32,6 @@ public class ProductsPage extends BasePage{
             addToCart(l);
         }
     }
-
 
     public void removeFromCartCatalog(String product) {
         addToCart(product);

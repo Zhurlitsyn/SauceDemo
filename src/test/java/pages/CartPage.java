@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class CartPage extends BasePage {
     public static final String removeFromCartXpath = "//*[text()='%s']/ancestor::*[contains(@class, 'cart_item')]//button";
-    String priceXpath = "//*[text()='%s']/ancestor::*[contains(@class, 'cart_item')]//div[@class='inventory_item_price']";
+    public static final String priceXpath = "//*[text()='%s']/ancestor::*[contains(@class, 'cart_item')]//div[@class='inventory_item_price']";
 
     public static final By CHECKOUT_BUTTON = By.id("checkout");
     public static final By CONTINUE_SHOPPING = By.id("continue-shopping");
