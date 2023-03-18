@@ -51,7 +51,7 @@ public class BaseTest {
             this.driver = new FirefoxDriver();
         }
 
-        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10L));
+        this.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         this.loginPage = new LoginPage(this.driver);
         this.productsPage = new ProductsPage(this.driver);
         this.cartPage = new CartPage(this.driver);

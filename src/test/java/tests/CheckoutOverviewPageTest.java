@@ -43,6 +43,7 @@ public class CheckoutOverviewPageTest extends BaseTest {
     }
     @Test
     public void buttonFinishClick() {
+        roadToCheckoutOverviewPage();
         checkoutOverviewPage.buttonFinishClick();
         String str = productsPage.getTitle();
         assertEquals(str, "Checkout: Complete!", "Wrong Title");

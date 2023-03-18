@@ -10,7 +10,9 @@ public class CartPage extends BasePage {
     public static final By CHECKOUT_BUTTON = By.id("checkout");
     public static final By CONTINUE_SHOPPING = By.id("continue-shopping");
     public static final By LIST_PRODUCTS = By.cssSelector(".cart_item");
-    public static final By containerBadge = By.xpath("//div[@class='shopping_cart_container']//span");
+    public static final By CONTAINER_BADGE = By.xpath("//div[@class='shopping_cart_container']//span");
+    public static final By LINK_DETAIL_NAME = By.xpath("//a[starts-with(@id,'item')]");
+    public static final By DETAIL_NAME = By.xpath("//div[@class='inventory_details_name large_size']");
 
     public CartPage(WebDriver driver) {
         super(driver);
@@ -32,7 +34,7 @@ public class CartPage extends BasePage {
     driver.findElement(removeFromCartLocator).click();
     }
     public Integer getNumberOnBadge() {
-        return Integer.parseInt(driver.findElement(containerBadge).getText());
+        return Integer.parseInt(driver.findElement(CONTAINER_BADGE).getText());
     }
     public Integer getNumberOfProducts() {
         return driver.findElements(LIST_PRODUCTS).size();
@@ -41,6 +43,17 @@ public class CartPage extends BasePage {
     public String getPriceOfProduct(String product) {
         By priceLocator = By.xpath(String.format(priceXpath, product));
         return driver.findElement(priceLocator).getText();
+    }
+
+    public String linkDetailProductName() {
+        return driver.findElement(LINK_DETAIL_NAME).getText();
+    }
+    public void linkDetailProductNameClick() {
+        driver.findElement(LINK_DETAIL_NAME).click();
+    }
+
+    public String getDetailName() {
+        return driver.findElement(DETAIL_NAME).getText();
     }
 
 

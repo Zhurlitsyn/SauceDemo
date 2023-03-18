@@ -68,14 +68,10 @@ public class CartPageTest extends BaseTest {
     @Test
     public void linkDetailsProduct() {
         roadToCartPage();
-        WebElement productNameCheck = driver.findElement(By.xpath("//a[starts-with(@id,'item')]"));
-        String productName = productNameCheck.getText();
-        productNameCheck.click();
-
-        String detailName = driver
-                .findElement(By.xpath("//div[@class='inventory_details_name large_size']"))
-                .getText();
-        assertTrue(productName.equals(detailName), "Names of product are DIFFERENT");
+        String productName = cartPage.linkDetailProductName();
+        cartPage.linkDetailProductNameClick();
+        String detailName = cartPage.getDetailName();
+        assertEquals(productName, detailName, "Names of product are DIFFERENT");
     }
 
     @Test
