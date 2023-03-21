@@ -7,8 +7,7 @@ public class ProblemUserTest extends BaseTest {
     public ProblemUserTest() {
     }
 
-    @Test(
-            description = "Check if user successful login"
+    @Test(description = "Check if user successful login parameter 'user' use"
     )
     public void successfulLogin() {
         loginPage.open();

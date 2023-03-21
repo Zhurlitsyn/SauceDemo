@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -15,18 +16,19 @@ public class CheckoutOverviewPage extends BasePage {
         super(driver);
     }
 
+    @Step("Getting Tax")
     public Double getPriceTax(By by) {
         double price = 0;
         String str = driver.findElement(by).getText();
-        price = Double.parseDouble(str.substring(str.indexOf("$")+1, str.length()));
+        price = Double.parseDouble(str.substring(str.indexOf("$") + 1, str.length()));
         return price;
     }
-
+    @Step("Getting total products price")
     public Double getForTotalProductPrice(String str) {
         return Double.parseDouble(str.substring(1));
 
     }
-
+    @Step("Finish button clicking")
     public void buttonFinishClick() {
         driver.findElement(FINISH_BUTTON).click();
     }

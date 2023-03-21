@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -20,6 +21,7 @@ public class CheckoutInformationPage extends BasePage {
         super(driver);
     }
 
+    @Step("Login on checkout info page")
     public void setLoginData(String firstname, String lastname, String postalcode) {
         driver.findElement(FIRST_NAME).sendKeys(firstname);
         driver.findElement(LAST_NAME).sendKeys(lastname);
@@ -28,7 +30,7 @@ public class CheckoutInformationPage extends BasePage {
         waitForPageLoaded();
     }
 
-    public void setEmptyFirstName() {
+    /*public void setEmptyFirstName() {
         driver.findElement(FIRST_NAME).sendKeys("");
         driver.findElement(LAST_NAME).sendKeys(LAST_NAME_INPUT);
         driver.findElement(POSTAL_CODE).sendKeys(POSTAL_CODE_INPUT);
@@ -45,7 +47,8 @@ public class CheckoutInformationPage extends BasePage {
         driver.findElement(LAST_NAME).sendKeys(LAST_NAME_INPUT);
         driver.findElement(POSTAL_CODE).sendKeys("");
         driver.findElement(CONTINUE_BUTTON).click();
-    }
+    }*/
+    @Step("Cancel button clicking")
     public void cancelButtonClick() {
         driver.findElement(CANCEL_BUTTON).click();
     }

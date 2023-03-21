@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -14,6 +15,7 @@ import static pages.CheckoutOverviewPage.*;
 public class CheckoutOverviewPageTest extends BaseTest {
     double totalProductsPrice, summaryTax, summaryTotal, total, calculatedTax;
     double scale = Math.pow(10, 2);
+    @Step("Login main page, add products to cart, checkout info page opening")
     public void roadToCheckoutOverviewPage() {
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
@@ -23,7 +25,7 @@ public class CheckoutOverviewPageTest extends BaseTest {
         checkoutPage.setLoginData(FIRST_NAME_INPUT, LAST_NAME_INPUT, POSTAL_CODE_INPUT);
     }
 
-    @Test
+    @Test(description = "Checking prices, total price, taxes")
     public void checkEqualPriceTax() {
         roadToCheckoutOverviewPage();
         List<WebElement> productList = driver.findElements(By.cssSelector(".inventory_item_price"));
@@ -41,7 +43,7 @@ public class CheckoutOverviewPageTest extends BaseTest {
         assertTrue((total == (summaryTax+summaryTotal)), "Wrong result");
 
     }
-    @Test
+    @Test(description = "Finish button clicking")
     public void buttonFinishClick() {
         roadToCheckoutOverviewPage();
         checkoutOverviewPage.buttonFinishClick();

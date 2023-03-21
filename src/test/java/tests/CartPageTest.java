@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
@@ -15,7 +16,7 @@ import static pages.ProductsPage.productsPriceList;
 public class CartPageTest extends BaseTest {
 
     String checkTitle; //
-
+    @Step("Login main page, add products to cart, cart page opening")
     public void roadToCartPage() {
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
@@ -23,14 +24,14 @@ public class CartPageTest extends BaseTest {
         productsPage.openCart();
     }
 
-    @Test
+    @Test(description = "Check if title match")
     public void checkTitleCartPage() {
         roadToCartPage();
         checkTitle = productsPage.getTitle();
         assertEquals(checkTitle, "Your Cart", "Wrong page title");
     }
 
-    @Test
+    @Test(description = "Check product list size vs number on badge")
     public void checkAmountProducts() {
         roadToCartPage();
         int numberOnBadge = cartPage.getNumberOnBadge();
@@ -38,7 +39,7 @@ public class CartPageTest extends BaseTest {
         assertTrue((numberOnBadge == sizeProduct), "Amount not Equals");
     }
 
-    @Test
+    @Test(description = "Check if products remove from cart")
     public void removeProductCartPage() {
         roadToCartPage();
         cartPage.removeFromCartPage(productsList.get(0));
@@ -49,7 +50,7 @@ public class CartPageTest extends BaseTest {
         assertEquals(checkProductName, productsList.get(2), "Wrong Product Name");
     }
 
-    @Test
+    @Test(description = "Check title on 'Checkout' button click")
     public void checkoutButtonClick() {
         roadToCartPage();
         cartPage.checkout();
@@ -57,7 +58,7 @@ public class CartPageTest extends BaseTest {
         assertEquals(checkTitle, "Checkout: Your Information", "Wrong page title");
     }
 
-    @Test
+    @Test(description = "Check title on 'Continue' button click")
     public void continueButtonClick() {
         roadToCartPage();
         cartPage.continueShopping();
@@ -65,7 +66,7 @@ public class CartPageTest extends BaseTest {
         assertEquals(checkTitle, "Products", "Wrong page title");
     }
 
-    @Test
+    @Test(description = "Check detail product link")
     public void linkDetailsProduct() {
         roadToCartPage();
         String productName = cartPage.linkDetailProductName();
@@ -74,13 +75,13 @@ public class CartPageTest extends BaseTest {
         assertEquals(productName, detailName, "Names of product are DIFFERENT");
     }
 
-    @Test
+    @Test(description = "Checking prices of products")
     public void matchPricesOfProducts() {
         roadToCartPage();
         String getProductPrice;
         for (int i = 0; i < productsList.size(); i++) {
             getProductPrice = cartPage.getPriceOfProduct(productsList.get(i));
-            assertTrue(getProductPrice.equals(productsPriceList.get(i)), "Some price is DIFFERENT");
+            assertEquals(getProductPrice, productsPriceList.get(i), "Some price is DIFFERENT");
         }
     }
 
