@@ -1,9 +1,10 @@
 package pages;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+@Log4j2
 public class CartPage extends BasePage {
     public static final String removeFromCartXpath = "//*[text()='%s']/ancestor::*[contains(@class, 'cart_item')]//button";
     public static final String priceXpath = "//*[text()='%s']/ancestor::*[contains(@class, 'cart_item')]//div[@class='inventory_item_price']";
@@ -35,6 +36,7 @@ public class CartPage extends BasePage {
 
     @Step("Remove product from Cart")
     public void removeFromCartPage(String product) {
+        log.info("Removing product from cart");
     By removeFromCartLocator = By.xpath(String.format(removeFromCartXpath, product));
     driver.findElement(removeFromCartLocator).click();
     }

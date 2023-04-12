@@ -22,9 +22,7 @@ public class ProductPageTest extends BaseTest {
     @Test(description = "Check if any product can remove")
     public void removeProductFromCart() {
         loginPage.open();
-        String login = System.getProperty("USERNAME", PropertyReader.getProperty("USERNAME"));
-        String login2 = System.getProperty("PASSWORD", PropertyReader.getProperty("PASSWORD"));
-        loginPage.login(login, login2);
+        loginPage.login(USERNAME, PASSWORD);
         productsPage.isPageOpened();
         productsPage.addToCartList();
         productsPage.removeFromCartCatalog("Sauce Labs Fleece Jacket");
