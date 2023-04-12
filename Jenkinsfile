@@ -6,23 +6,21 @@ pipeline {
         maven "M3"
     }
     parameters {
-     gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
     }
 
     stages {
         stage('GIT Clone') {
             steps {
                 // Get some code from a GitHub repository
-                git branch: "main", url: 'https://github.com/Zhurlitsyn/SauceDemo.git'
-
-
+                git branch: "${params.BRANCH}", url: 'https://github.com/Zhurlitsyn/SauceDemo.git'
             }
         }
         stage('UI Test') {
             steps {
                    bat "mvn clean test"
-                   }
-        }
+            }
+
             post {
                 // If Maven was able to run the tests, even if some of the test
                 // failed, record the test results and archive the jar file.
@@ -38,12 +36,6 @@ pipeline {
                      ])
                 }
             }
-        }
-        stage('Run test') {
-         steps {
-            // Get some code from a GitHub repository
-            git branch: "${params.BRANCH}", url: 'https://github.com/Zhurlitsyn/SauceDemo.git'
-         }
         }
 
     }
