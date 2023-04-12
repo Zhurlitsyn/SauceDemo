@@ -22,7 +22,7 @@ public class LoginTest extends BaseTest {
     public void successfulLoginUsingSecrets() {
         this.loginPage.open();
         String login = System.getProperty("USERNAME", PropertyReader.getProperty("USERNAME"));
-        String login2 = System.getProperty("USERNAME", PropertyReader.getProperty("USERNAME"));
+        String login2 = System.getProperty("PASSWORD", PropertyReader.getProperty("PASSWORD"));
         this.loginPage.login(login, login2);
         String checkStr = this.productsPage.getTitle();
         Assert.assertEquals(checkStr, "Products", "Login is unsuccessful");
