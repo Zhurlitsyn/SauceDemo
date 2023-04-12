@@ -27,17 +27,16 @@ pipeline {
                 // failed, record the test results and archive the jar file.
                 always {
                     junit '**/target/surefire-reports/TEST-*.xml'
-                    archiveArtifacts 'target/*.jar'
+                    archiveArtifacts '**/target/surefire-reports/TEST-*.xml'
                     allure([
-                             includeProperties: false,
-                             jdk: '',
-                             properties: [],
-                             reportBuildPolicy: 'ALWAYS',
-                             results: [[path: 'target/allure-results']]
+                           includeProperties: false,
+                           jdk: '',
+                           properties: [],
+                           reportBuildPolicy: 'ALWAYS',
+                           results: [[path: 'target/allure-results']]
                      ])
                 }
             }
         }
-
     }
 }

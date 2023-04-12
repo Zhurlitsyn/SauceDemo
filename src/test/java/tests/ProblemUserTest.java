@@ -11,7 +11,7 @@ public class ProblemUserTest extends BaseTest {
     )
     public void successfulLogin() {
         loginPage.open();
-        loginPage.login(System.getProperty("user"), "secret_sauce");
+        loginPage.login(USERNAME, PASSWORD);
         String checkStr = productsPage.getTitle();
         Assert.assertEquals(checkStr, "Products", "Login is unsuccessful");
     }
