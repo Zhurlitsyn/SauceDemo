@@ -1,6 +1,7 @@
 package tests;
 
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 import static org.testng.Assert.assertEquals;
 
@@ -21,7 +22,9 @@ public class ProductPageTest extends BaseTest {
     @Test(description = "Check if any product can remove")
     public void removeProductFromCart() {
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
+        String login = System.getProperty("USERNAME", PropertyReader.getProperty("USERNAME"));
+        String login2 = System.getProperty("PASSWORD", PropertyReader.getProperty("PASSWORD"));
+        loginPage.login(login, login2);
         productsPage.isPageOpened();
         productsPage.addToCartList();
         productsPage.removeFromCartCatalog("Sauce Labs Fleece Jacket");
