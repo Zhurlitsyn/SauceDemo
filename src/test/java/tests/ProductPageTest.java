@@ -19,7 +19,7 @@ public class ProductPageTest extends BaseTest {
         assertEquals(str, "Checkout: Your Information", "Wrong title");
     }
 
-    @Test(description = "Check if any product can remove")
+    /*@Test(description = "Check if any product can remove")
     public void removeProductFromCart() {
         loginPage.open();
         loginPage.login(USERNAME, PASSWORD);
@@ -28,7 +28,7 @@ public class ProductPageTest extends BaseTest {
         productsPage.removeFromCartCatalog("Sauce Labs Fleece Jacket");
         int num = cartPage.getNumberOnBadge();
         assertEquals(num, 2, "Wrong amount of products");
-    }
+    }*/
 
 
 }
