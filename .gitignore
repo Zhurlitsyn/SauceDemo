@@ -12,3 +12,6 @@
 
 #target folder
 /.target
+
+#config properties
+config.properties
