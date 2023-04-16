@@ -2,6 +2,7 @@ package tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 public class ProblemUserTest extends BaseTest {
     public ProblemUserTest() {
@@ -11,7 +12,10 @@ public class ProblemUserTest extends BaseTest {
     )
     public void successfulLogin() {
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
+        String login = System.getProperty("username", PropertyReader.getProperty("USERNAME"));
+        String login2 = System.getProperty("password", PropertyReader.getProperty("PASSWORD"));
+        this.loginPage.login(login, login2);
+        //loginPage.login(USERNAME, PASSWORD);
         String checkStr = productsPage.getTitle();
         Assert.assertEquals(checkStr, "Products", "Login is unsuccessful");
     }

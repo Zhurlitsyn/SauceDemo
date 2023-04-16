@@ -14,4 +14,4 @@
 /.target
 
 #config properties
-config.properties
+*.properties

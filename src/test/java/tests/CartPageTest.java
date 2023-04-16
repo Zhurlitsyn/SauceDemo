@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 import java.util.List;
 
@@ -19,7 +20,10 @@ public class CartPageTest extends BaseTest {
     @Step("Login main page, add products to cart, cart page opening")
     public void roadToCartPage() {
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
+        String login = System.getProperty("username", PropertyReader.getProperty("USERNAME"));
+        String login2 = System.getProperty("password", PropertyReader.getProperty("PASSWORD"));
+        this.loginPage.login(login, login2);
+        //loginPage.login(USERNAME, PASSWORD);
         productsPage.addToCartList();
         productsPage.openCart();
     }

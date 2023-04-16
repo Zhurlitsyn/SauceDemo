@@ -2,6 +2,7 @@ package tests;
 
 import io.qameta.allure.Step;
 import org.testng.annotations.Test;
+import utils.PropertyReader;
 
 import static pages.CheckoutInformationPage.*;
 
@@ -12,7 +13,10 @@ public class CheckoutInformationPageTest extends BaseTest {
     @Step("Login main page, add products to cart, checkout page opening")
     public void roadToCheckoutInfoPage() {
         loginPage.open();
-        loginPage.login(USERNAME, PASSWORD);
+        String login = System.getProperty("username", PropertyReader.getProperty("USERNAME"));
+        String login2 = System.getProperty("password", PropertyReader.getProperty("PASSWORD"));
+        this.loginPage.login(login, login2);
+        //loginPage.login(USERNAME, PASSWORD);
         productsPage.addToCartList();
         productsPage.openCart();
         cartPage.checkout();

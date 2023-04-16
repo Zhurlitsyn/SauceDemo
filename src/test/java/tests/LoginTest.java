@@ -14,7 +14,10 @@ public class LoginTest extends BaseTest {
     @Test(description = "Check if user successful login")
     public void successfulLogin() {
         this.loginPage.open();
-        this.loginPage.login(USERNAME, PASSWORD);
+        String login = System.getProperty("username", PropertyReader.getProperty("USERNAME"));
+        String login2 = System.getProperty("password", PropertyReader.getProperty("PASSWORD"));
+        this.loginPage.login(login, login2);
+        //this.loginPage.login(USERNAME, PASSWORD);
         String checkStr = this.productsPage.getTitle();
         Assert.assertEquals(checkStr, "Products", "Login is unsuccessful");
     }

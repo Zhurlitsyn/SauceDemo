@@ -32,8 +32,8 @@ public class BaseTest {
     CheckoutInformationPage checkoutPage;
     CartPage cartPage;
     CheckoutOverviewPage checkoutOverviewPage;
-    public static final String USERNAME = "standard_user";
-    public static final String PASSWORD = "secret_sauce";
+    //public static final String USERNAME = "standard_user";
+    //public static final String PASSWORD = "secret_sauce";
 
     public BaseTest() {
     }
