@@ -1,18 +1,20 @@
 package tests;
 
+import lombok.extern.log4j.Log4j2;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.PropertyReader;
 
 import static org.testng.Assert.assertEquals;
-
+@Log4j2
 public class LoginTest extends BaseTest {
     public LoginTest() {
     }
 
     @Test(description = "Check if user successful login")
     public void successfulLogin() {
+        log.info("Check if user successful login");
         this.loginPage.open();
         String login = System.getProperty("username", PropertyReader.getProperty("USERNAME"));
         String login2 = System.getProperty("password", PropertyReader.getProperty("PASSWORD"));
@@ -23,6 +25,8 @@ public class LoginTest extends BaseTest {
     }
     @Test(description = "Check if user successful login")
     public void successfulLoginUsingSecrets() {
+        log.info("Check if user successful login");
+
         this.loginPage.open();
         String login = System.getProperty("username", PropertyReader.getProperty("USERNAME"));
         String login2 = System.getProperty("password", PropertyReader.getProperty("PASSWORD"));

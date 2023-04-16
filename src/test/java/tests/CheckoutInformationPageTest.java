@@ -1,6 +1,7 @@
 package tests;
 
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
 import utils.PropertyReader;
 
@@ -8,10 +9,11 @@ import static pages.CheckoutInformationPage.*;
 
 import static org.testng.Assert.assertEquals;
 import static pages.LoginPage.*;
-
+@Log4j2
 public class CheckoutInformationPageTest extends BaseTest {
     @Step("Login main page, add products to cart, checkout page opening")
     public void roadToCheckoutInfoPage() {
+        log.info("Path to Checkout page");
         loginPage.open();
         String login = System.getProperty("username", PropertyReader.getProperty("USERNAME"));
         String login2 = System.getProperty("password", PropertyReader.getProperty("PASSWORD"));
