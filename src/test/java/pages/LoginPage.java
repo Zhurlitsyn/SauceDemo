@@ -25,7 +25,7 @@ public class LoginPage extends BasePage {
         return driver.findElement(ERROR_MESSAGE).getText();
     }
 
-    @Step("Login by user '{username}' '{password}'")
+    @Step("Login by user")
     public void login(String username, String password) {
         log.info("Login by user");
         driver.findElement(USERNAME_INPUT).sendKeys(username);
